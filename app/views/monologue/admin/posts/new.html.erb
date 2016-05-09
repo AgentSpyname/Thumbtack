@@ -1,0 +1,18 @@
+ <section class="content-header">
+      <h1>
+        New Post
+        <small><%= @app_name %></small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><%= link_to admin_posts_path do %><i class="fa fa-dashboard"></i>Posts<% end %></li>
+        <li class="active">New Post</li>
+      </ol>
+    </section>
+    
+<section class="content">
+    <div class="col-lg-12 col-xs-12">
+<%= monologue_admin_form_for ["admin", @post] do |post| %>
+  <%= render partial: 'form', locals: {post: post} %>
+<% end %>
+</div>
+</section>

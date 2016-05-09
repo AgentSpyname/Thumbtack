@@ -1,0 +1,8 @@
+class AddNameAndContentToPage < ActiveRecord::Migration
+  def change
+    add_column :pages, :content, :text
+    add_column :pages, :name, :string
+    add_column :pages, :layout_name, :string
+    add_column :pages, :custom_layout_content, :string
+  end
+end

@@ -1,0 +1,3 @@
+<%=  Liquid::Template.parse(@post.layout.custom_layout).
+      render('page_content' => yield, 'pagename' => @post.title, 'page_title' => yield(:title)).html_safe %>
+      

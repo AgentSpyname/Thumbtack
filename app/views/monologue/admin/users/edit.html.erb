@@ -1,0 +1,17 @@
+ <section class="content-header">
+      <h1>
+        Edit User - <%= @user.name %>
+        <small><%= @app_name %></small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><%= link_to "/admin" do %><i class="fa fa-dashboard"></i>Dashboard<% end %></li>
+        <li><%= link_to admin_users_path do %>Users<% end %></li>
+        <li class="active">Edit User</li>
+      </ol>
+    </section>
+    <div class="col-lg-12 col-xs-12">
+    <%= monologue_admin_form_for [:admin, @user], method: :post do |user| %>
+  <%= render :partial => 'form', :locals => { :user => user } %>
+  <%= user.submit "Update User" , class:  "btn btn-large btn-primary" %>
+<% end %>
+</div>

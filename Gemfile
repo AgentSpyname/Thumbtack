@@ -45,3 +45,9 @@ group :development do
   gem 'spring'
 end
 
+gem 'monologue'
+gem  'liquid'
+gem 'actionpack-page_caching'
+
+gem 'impressionist'
+gem 'will_paginate', '~> 3.1.0'

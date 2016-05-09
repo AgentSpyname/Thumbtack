@@ -1,0 +1,62 @@
+<%= form_for(@page) do |f| %>
+  <% if @page.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@page.errors.count, "error") %> prohibited this page from being saved:</h2>
+
+      <ul>
+      <% @page.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br/>
+    <%= f.text_field :name %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :content %><br/>
+    <%= f.text_area :content %>
+  </div>
+
+  <div class="field">
+    <%= f.label :nested %><br>
+    <%= f.text_field :nested %>
+  </div>
+  <div class="field">
+    <%= f.label :postable %><br>
+    <%= f.check_box :postable %>
+  </div>
+  
+   <div class="field">
+    <%= f.label :homepage %><br>
+    <%= f.check_box :homepage %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :slug %><br>
+    <%= f.text_field :slug %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :static %><br>
+    <%= f.check_box :static %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :layout_id %><br/>
+    <%= f.collection_select(:layout_id, Layout.all, :id, :name, prompt: true) %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :template_id %><br/>
+    <%= f.collection_select(:template_id, ::Template.all, :id, :name, prompt: true) %>
+  </div>
+  
+
+<div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

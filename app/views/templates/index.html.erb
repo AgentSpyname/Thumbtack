@@ -1,0 +1,35 @@
+ <section class="content-header">
+      <h1>
+       All Templates
+        <small><%= @app_name %></small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><%= link_to admin_path do %><i class="fa fa-dashboard"></i>Dashboard<% end %></li>
+        <li class="active">Templates</li>
+      </ol>
+    </section>
+    
+<div class="col-lg-12 col-xs-12">
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @templates.each do |template| %>
+      <tr>
+        <td><%= template.name %></td>
+        <td><%= link_to 'Show/Edit', edit_template_path(template) %></td>
+        <td><%= link_to 'Destroy', template, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Template', new_template_path, class: 'btn btn-success' %>
+</div>

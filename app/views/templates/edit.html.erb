@@ -1,0 +1,15 @@
+ <section class="content-header">
+      <h1>
+       Edit Template - <%= @template.name %>
+        <small><%= @app_name %></small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><%= link_to admin_path do %><i class="fa fa-dashboard"></i>Dashboard<% end %></li>
+        <li><%= link_to templates_path do %>Templates</li><% end %>
+        <li class="active">Edit Template</li>
+      </ol>
+    </section>
+
+<div class="col-lg-12 col-xs-12">
+<%= render 'form' %>
+</div>
