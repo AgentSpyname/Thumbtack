@@ -82,4 +82,3 @@ production:
   <<: *default
   database: thumbtack_production
   username: workspace
-  password: <%= ENV['WORKSPACE_DATABASE_PASSWORD'] %>
