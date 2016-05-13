@@ -55,6 +55,8 @@ gem 'will_paginate', '~> 3.1.0'
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'autotest'
+  gem 'autotest-standalone'
 end
 group :test do
   gem 'faker'

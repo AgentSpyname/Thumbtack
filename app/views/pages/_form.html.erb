@@ -24,6 +24,8 @@
   <div class="field">
     <%= f.label :nested %><br>
     <%= f.text_field :nested, class: 'form-control' %>
+    <%= f.collection_select(:nested, Page.all, :give_nested, :name, {prompt: true, class: "dropdown-menu"}) %>
+
   </div>
   <div class="field">
     <%= f.label :postable %><br>
@@ -62,6 +64,6 @@
   
 
 <div class="actions">
-    <%= f.submit %>
+    <%= f.submit  %>
   </div>
 <% end %>

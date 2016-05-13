@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    ZenTest (4.11.0)
     actionmailer (4.2.5)
       actionpack (= 4.2.5)
       actionview (= 4.2.5)
@@ -40,6 +41,9 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.4.0)
     arel (6.0.3)
+    autotest (4.4.6)
+      ZenTest (>= 4.4.1)
+    autotest-standalone (4.5.11)
     bcrypt (3.1.11)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -221,6 +225,8 @@ PLATFORMS
 
 DEPENDENCIES
   actionpack-page_caching
+  autotest
+  autotest-standalone
   byebug
   capybara-webkit
   coffee-rails (~> 4.1.0)
