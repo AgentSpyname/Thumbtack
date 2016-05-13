@@ -47,7 +47,6 @@ end
 
 gem 'monologue'
 gem  'liquid'
-gem 'actionpack-page_caching'
 
 gem 'impressionist'
 gem 'will_paginate', '~> 3.1.0'
@@ -55,3 +54,4 @@ gem 'will_paginate', '~> 3.1.0'
 
 gem 'morrisjs-rails'
 gem 'raphael-rails'
+gem 'rails_12factor', group: :production
