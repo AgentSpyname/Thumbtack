@@ -1,3 +1,4 @@
+<%= render 'layouts/menubar' %>
 <%=  Liquid::Template.parse(@post.layout.custom_layout).
-      render('page_content' => yield, 'pagename' => @post.title, 'page_title' => yield(:title)).html_safe %>
+      render('page_content' => yield, 'pagename' => @post.title, 'page_title' => yield(:title), "menu_items" => @menu_list_items).html_safe %>
       

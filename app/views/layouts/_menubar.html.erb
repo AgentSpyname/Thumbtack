@@ -1,0 +1,6 @@
+<% @menu_list_items = Array.new %>
+<% @menu_items.each do |item| %>
+    <%  @menu_list_items.push({"name" => item.name, "slug" => item.slug }) %>
+<% end %>
+
+<%= @menu_list_items %>

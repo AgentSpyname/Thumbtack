@@ -1,6 +1,20 @@
-<h1>Editing Page</h1>
+<section class="content-header">
+      <h1>
+       Edit Template - <%= @page.name %>
+        <small><%= @app_name %></small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><%= link_to admin_path do %><i class="fa fa-dashboard"></i>Dashboard<% end %></li>
+        <li><%= link_to pages_path do %>Pages</li><% end %>
+        <li class="active">Edit Page</li>
+      </ol>
+    </section>
+    
+<div class="col-lg-12 col-xs-12">
+ 
 
 <%= render 'form' %>
 
 <%= link_to 'Show', @page %> |
 <%= link_to 'Back', pages_path %>
+</div>

@@ -51,3 +51,15 @@ gem 'actionpack-page_caching'
 
 gem 'impressionist'
 gem 'will_paginate', '~> 3.1.0'
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+group :test do
+  gem 'faker'
+  gem 'capybara-webkit'
+end
+
+gem 'morrisjs-rails'
+gem 'raphael-rails'

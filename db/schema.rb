@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160509200449) do
+ActiveRecord::Schema.define(version: 20160510225048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -112,6 +112,7 @@ ActiveRecord::Schema.define(version: 20160509200449) do
     t.integer  "layout_id"
     t.boolean  "homepage"
     t.integer  "template_id"
+    t.boolean  "menu"
   end
 
   create_table "templates", force: :cascade do |t|

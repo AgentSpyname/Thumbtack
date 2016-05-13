@@ -7,5 +7,19 @@ class ApplicationController < ActionController::Base
   private
     def configure_app()
       @app_name = AppDatum.where(:name => "Site Title").last.contents
+      @widget1 =  AppDatum.where(:name => "Widget1").last.contents
+      @widget2 =  AppDatum.where(:name => "Widget2").last.contents
+      @widget3 =  AppDatum.where(:name => "Widget3").last.contents
+      @widget4 =  AppDatum.where(:name => "Widget4").last.contents
+      @widget5 =  AppDatum.where(:name => "Widget5").last.contents
+      @widget6 =  AppDatum.where(:name => "Widget6").last.contents
+      @widget7 =  AppDatum.where(:name => "Widget7").last.contents
+      @widget8 =  AppDatum.where(:name => "Widget8").last.contents
+      @widget9 =  AppDatum.where(:name => "Widget9").last.contents
+      @widget10 =  AppDatum.where(:name => "Widget10").last.contents
+      @footer = AppDatum.where(:footer => "Footer")
+      @menu_items = Page.where(:menu => true)
+      
+
     end
 end

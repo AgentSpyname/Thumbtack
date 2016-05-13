@@ -1,11 +1,14 @@
 class PagesController < ApplicationController
   before_action :set_page, only: [:show, :edit, :update, :destroy]
   layout :set_layout, only: [:show, :homepage]
+  impressionist :actions=>[:homepage]
+
 
   # GET /pages
   # GET /pages.json
   def index
     @pages = Page.all
+    render :layout => 'admin/application'
   end
 
   # GET /pages/1
@@ -17,15 +20,18 @@ class PagesController < ApplicationController
   
   def homepage
     @page = Page.where(:homepage => true).last
+    impressionist(@page, "Homepage")#Tracks views for the post
   end
 
   # GET /pages/new
   def new
     @page = Page.new
+    render :layout => 'admin/application'
   end
 
   # GET /pages/1/edit
   def edit
+    render :layout => 'admin/application'
   end
 
   # POST /pages
@@ -81,6 +87,6 @@ class PagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def page_params
-      params.require(:page).permit(:nested, :postable, :slug, :static, :name, :layout_name, :custom_layout_content, :content,:layout_id,:homepage,:template_id)
+      params.require(:page).permit(:nested, :postable, :slug, :static, :name, :layout_name, :custom_layout_content, :content,:layout_id,:homepage,:template_id, :menu)
     end
 end

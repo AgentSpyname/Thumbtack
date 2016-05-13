@@ -3,6 +3,7 @@ class Page < ActiveRecord::Base
     has_many :posts, :class_name => "Monologue::Post", :foreign_key => "page_id"
     belongs_to :layout
     belongs_to :template
+  is_impressionable
 
   def to_param
     slug
