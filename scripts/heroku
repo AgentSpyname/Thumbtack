@@ -34,4 +34,4 @@ heroku run rails runner "Template.create(:name => 'Show Posts', :content => '')"
 sleep 10
 heroku run rails runner "Template.create(:name => 'Homepage Layout', :content => '')"
 sleep 10
-heroku run rails runner "Page.create(:name => 'Homepage', :nested => '/', :slug => 'homepage', :static => true, :content => '', :homepage => true, :template_id => Template.where(:homepage => true).last.id)"
+heroku run rails runner "Page.create(:name => 'Homepage', :nested => '/', :slug => 'homepage', :static => true, :content => '', :homepage => true, :template_id => Template.where(:name => 'Homepage Layout').last.id)"
