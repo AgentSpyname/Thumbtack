@@ -1,0 +1,23 @@
+echo "Starting Deploy process..."
+echo "Please enter the directory where Thumbtack is stored:"
+read app_dir
+echo "Using Thumbtack Directory:" $app_dir
+echo "Precompiling Assets(This may take a while):"
+cp $app_dir/app/assets/javascripts/admin.js.erb $app_dir/tmp/javascripts/admin.js.erb
+rm $app_dir/app/assets/javascripts/admin.js.erb
+cd $app_dir
+rake assets:precompile RAILS_ENV=production RAILS_GROUPS=assets
+
+echo "Pushing to Github"
+git add .
+git commit -m "Pre-deploy, assets compiled."
+git push origin master
+
+echo "Please choose your deploy method/service:"
+select yn in "Capistrano" "Heroku" "AWS" ; do
+    case $yn in
+        "Capistrano!" ) ../scripts/cap ;;
+        "Heroku" ) ../scripts/heroku;;
+        "AWS" ) echo "Coming soon!";;
+    esac
+done

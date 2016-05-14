@@ -1,0 +1,8 @@
+echo "Hey there! Welcome to Thumbtack! Before installing, make sure you follow all the Steps in README.md"
+select yn in "Yes, let's install Thumbtack!" "Show me README.md" "Quit" ; do
+    case $yn in
+        "Yes, let's install Thumbtack!" ) scripts/deploy; break;;
+        "Show me README.md" ) cat README.md;;
+        "Quit" ) exit;;
+    esac
+done
