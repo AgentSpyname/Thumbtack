@@ -6,9 +6,9 @@ new Morris.Line({
   // Chart data records -- each entry in this array corresponds to a point on
   // the chart.
   <% time_now = Time.now.strftime("%Y-%m-%d") %>
-  <% @homepage = Page.where(:name => "Homepage").last %> 
-  <% today_views = @homepage.impressionist_count(:message => "Homepage", :start_date=>time_now) %>
-  
+  <%# @homepage = Page.where(:name => "Homepage").last %> 
+  <%# today_views = @homepage.impressionist_count(:message => "Homepage", :start_date=>time_now) %>
+  <% today_views = 2 %>
      
  data: [
  <% 31.times do |i| %> 
