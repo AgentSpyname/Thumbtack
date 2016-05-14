@@ -1,9 +1,3 @@
 echo "Running Inital Heroku Deploy!"
-echo "Are you pushing from the master branch of your Github Repo, or another branch?"
-select yn in "Master" "Other"  ; do
-    case $yn in
-        "Master!" ) git push heroku master ;;
-        "Branch" ) echo "Which branch:";read custom_branch;git push heroku $custom_branch:master;;
-    esac
-done
+git push heroku master
 
