@@ -1,6 +1,7 @@
 echo 'Running Inital Heroku Deploy!'
 git push heroku master
 heroku run rake db:migrate
+sleep 10
 heroku run rails runner "AppDatum.create(:name => 'Site Title', :contents => 'Thumbtack')"
 sleep 10
 heroku run rails runner "AppDatum.create(:name => 'Widget1', :contents => '')"
@@ -35,3 +36,15 @@ sleep 10
 heroku run rails runner "Template.create(:name => 'Homepage Layout', :content => '')"
 sleep 10
 heroku run rails runner "Page.create(:name => 'Homepage', :nested => '/', :slug => 'homepage', :static => true, :content => '', :homepage => true, :template_id => Template.where(:name => 'Homepage Layout').last.id)"
+sleep 5
+echo "Heroku Datbase preperation complete."
+
+echo "Recompiling assets....."
+cp $app_dir/tmp/javascripts/admin.js.erb $app_dir/app/assets/javascripts/admin.js.erb 
+rake assets:precompile RAILS_ENV=production RAILS_GROUPS=assets
+git add .
+git commit -m "Fixed Javascripts"
+git push origin master
+git push heroku master
+
+echo "Push to heroku complete...."
