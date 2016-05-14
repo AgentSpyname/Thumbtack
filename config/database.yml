@@ -80,4 +80,3 @@ test:
 #
 production:
   <<: *default
-  database: thumbtack_production
