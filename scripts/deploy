@@ -16,8 +16,8 @@ git push origin master
 echo "Please choose your deploy method/service:"
 select yn in "Capistrano" "Heroku" "AWS" ; do
     case $yn in
-        "Capistrano!" ) ../scripts/cap ;;
-        "Heroku" ) ../scripts/heroku;;
+        "Capistrano!" ) $app_dir/scripts/cap ;;
+        "Heroku" ) $app_dir/scripts/heroku;;
         "AWS" ) echo "Coming soon!";;
     esac
 done
