@@ -2,22 +2,36 @@ echo 'Running Inital Heroku Deploy!'
 git push heroku master
 heroku run rake db:migrate
 heroku run rails runner "AppDatum.create(:name => 'Site Title', :contents => 'Thumbtack')"
+sleep 10
 heroku run rails runner "AppDatum.create(:name => 'Widget1', :contents => '')"
+sleep 10
 heroku run rails runner "AppDatum.create(:name => 'Widget2', :contents => '')"
+sleep 10
 heroku run rails runner "AppDatum.create(:name => 'Widget3', :contents => '')"
+sleep 10
 heroku run rails runner "AppDatum.create(:name => 'Widget4', :contents => '')"
+sleep 10
 heroku run rails runner "AppDatum.create(:name => 'Widget5', :contents => '')"
+sleep 10
 heroku run rails runner "AppDatum.create(:name => 'Widget6', :contents => '')"
+sleep 10
 heroku run rails runner "AppDatum.create(:name => 'Widget7', :contents => '')"
+sleep 10
 heroku run rails runner "AppDatum.create(:name => 'Widget8', :contents => '')"
+sleep 10
 heroku run rails runner "AppDatum.create(:name => 'Widget9', :contents => '')"
+sleep 10
 heroku run rails runner "AppDatum.create(:name => 'Widget10', :contents => '')"
+sleep 10
 
 heroku run rails runner "Layout.create(:name => 'Main Layout', :custom_layout => '')"
+sleep 10
 heroku run rails runner "Layout.create(:name => 'Post Layout', :custom_layout => '')"
-
+sleep 10
 heroku run rails runner "Template.create(:name => 'Show Pages', :content => '')"
+sleep 10
 heroku run rails runner "Template.create(:name => 'Show Posts', :content => '')"
+sleep 10
 heroku run rails runner "Template.create(:name => 'Homepage Layout', :content => '')"
-
+sleep 10
 heroku run rails runner "Page.create(:name => 'Homepage', :nested => '/', :slug => 'homepage', :static => true, :content => '', :template_id => Template.where(:name => 'Homepage').last.id)"
