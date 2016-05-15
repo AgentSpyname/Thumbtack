@@ -1,5 +1,6 @@
 class LayoutsController < ApplicationController
   before_action :set_layout, only: [:show, :edit, :update, :destroy]
+  before_action :true_admin
   layout 'admin/application'
   # GET /layouts
   # GET /layouts.json
@@ -71,4 +72,24 @@ class LayoutsController < ApplicationController
     def layout_params
       params.require(:layout).permit(:name, :custom_layout, :layout_type)
     end
+    
+        
+     def authenticate_user!
+         if monologue_current_user.nil?
+           redirect_to monologue.admin_login_url, alert: I18n.t("monologue.admin.login.need_auth")
+         end
+      end
+         
+       def monologue_current_user
+        @monologue_current_user ||= Monologue::User.find(session[:monologue_user_id]) if session[:monologue_user_id]
+       end
+
+
+    def true_admin
+      if monologue_current_user.role == "admin"
+      else
+        redirect_to "/admin/"
+      end
+    end
 end
+

@@ -1,0 +1,34 @@
+ <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        All App Data
+        <small><%= @app_name %></small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="/admin"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+        <li><a href="/app_datum">App Data</a></li>
+      </ol>
+    </section>
+    
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Contents</th>
+      <th colspan="2">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @app_data.each do |app_datum| %>
+      <tr>
+        <td><%= app_datum.name %></td>
+        <td><%= app_datum.contents %></td>
+        <td><%= link_to 'Edit', edit_app_datum_path(app_datum) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

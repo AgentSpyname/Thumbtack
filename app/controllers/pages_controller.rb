@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   before_action :set_page, only: [:show, :edit, :update, :destroy]
   layout :set_layout, only: [:show, :homepage]
   impressionist :actions=>[:homepage]
+  before_action :check_role, except: :show
 
 
   # GET /pages
@@ -89,4 +90,23 @@ class PagesController < ApplicationController
     def page_params
       params.require(:page).permit(:nested, :postable, :slug, :static, :name, :layout_name, :custom_layout_content, :content,:layout_id,:homepage,:template_id, :menu)
     end
-end
+    
+        
+     def authenticate_user!
+         if monologue_current_user.nil?
+           redirect_to monologue.admin_login_url, alert: I18n.t("monologue.admin.login.need_auth")
+         end
+      end
+         
+       def monologue_current_user
+        @monologue_current_user ||= Monologue::User.find(session[:monologue_user_id]) if session[:monologue_user_id]
+       end
+
+
+    def check_role
+      if monologue_current_user.role == "admin" or monologue_current_user.role == "cm"
+      else
+        redirect_to "/admin/"
+      end
+    end
+  end

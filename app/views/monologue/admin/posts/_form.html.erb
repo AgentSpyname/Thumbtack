@@ -1,3 +1,6 @@
+<% if monologue_current_user.role == "marketing" %>
+You do not have permission to create/modify posts.
+<% else %>
 <%= post.error_messages %>
 <%= post.text_field :title, label:  t(".title"), class:  "form-control" %><br/>
 <%= post.text_area :content, label:  t(".content"), class:  "span12 ckeditor", id: "post_content" %><br/>
@@ -9,7 +12,10 @@
 <%= post.collection_select(:template_id, ::Template.all, :id, :name, {:prompt=>true}, {:class=>'form-control'}) %>
 
 <div class="checkbox">
+<% if monologue_current_user.role == "marketing" or monologue_current_user.role == "writer"  %>
+<% else %>
 <%= post.check_box :published, label:  t(".published") %>
+<% end %>
 </div>
 <div class="form-actions">
   <%= post.button t(".save"), class:  "btn btn-large btn-primary" %> 
@@ -34,3 +40,4 @@
   }
   $("#post_tag_list").select2({tags: <%= Monologue::Tag.all.map{|t| t.name }.to_json.html_safe %> });
 </script>
+<% end %>

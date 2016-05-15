@@ -1,5 +1,6 @@
 class TemplatesController < ApplicationController
   before_action :set_template, only: [:show, :edit, :update, :destroy]
+  before_action :true_admin
   layout 'admin/application'
   # GET /templates
   # GET /templates.json
@@ -70,5 +71,23 @@ class TemplatesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def template_params
       params.require(:template).permit(:name, :content)
+    end
+    
+     def authenticate_user!
+         if monologue_current_user.nil?
+           redirect_to monologue.admin_login_url, alert: I18n.t("monologue.admin.login.need_auth")
+         end
+      end
+         
+       def monologue_current_user
+        @monologue_current_user ||= Monologue::User.find(session[:monologue_user_id]) if session[:monologue_user_id]
+       end
+
+
+    def true_admin
+      if monologue_current_user.role == "admin"
+      else
+        redirect_to "/admin/"
+      end
     end
 end

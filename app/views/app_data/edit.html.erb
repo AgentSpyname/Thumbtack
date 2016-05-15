@@ -1,0 +1,17 @@
+ <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Edit Widget
+        <small><%= @app_name %></small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+        <li><a href="/admin/widgets">App Data</a></li>
+        <li class="active">Edit App Datum</li>
+      </ol>
+    </section>
+    
+
+<%= render 'form' %>
+
+<%= link_to 'Back', app_data_path %>

@@ -1,0 +1,43 @@
+//Line Chart for Views
+
+new Morris.Line({
+  // ID of the element in which to draw the chart.
+  element: 'views-chart',
+  // Chart data records -- each entry in this array corresponds to a point on
+  // the chart.
+  <% time_now = Time.now.strftime("%Y-%m-%d") %>
+  <% @homepage = Page.where(:name => "Homepage").last %> 
+  <% today_views = @homepage.impressionist_count(:message => "Homepage", :start_date=>time_now) %>
+  
+     
+ data: [
+ <% 31.times do |i| %> 
+ <% t = Time.now - i.days %>
+ <% if i == 0 %>
+ <% else %>
+  { day: '<%= t.strftime("%Y-%m-%d") %>', value: <%=  @homepage.impressionist_count(:message => "Homepage", :start_date=>t.strftime("%Y-%m-%d"), :end_date =>t.strftime("%Y-%m-%d")) %> },
+ <% end %>
+ <% end %>
+    { day: '<%= time_now %>', value: <%= today_views %> }
+  ],
+  // The name of the data record attribute that contains x-values.
+  xkey: 'day',
+  // A list of names of data record attributes that contain y-values.
+  ykeys: ['value'],
+  // Labels for the ykeys -- will be displayed when you hover over the
+  // chart.
+  labels: ['Value']
+});
+
+
+//Pie chart for Post Views
+Morris.Donut({
+  element: 'post-views-chart',
+  data: [
+  <% Monologue::Post.all.each do |post| %>
+    {label: "<%= post.title %>", value: <%= post.impressionist_count %>},
+  <% end %>
+    {label: 'Homepage', value: <%= today_views %>}
+    
+  ]
+});
