@@ -3,7 +3,7 @@ echo "Please enter the directory where Thumbtack is stored:"
 read app_dir
 echo "Using Thumbtack Directory:" $app_dir
 echo "Precompiling Assets(This may take a while):"
-cp $app_dir/app/assets/javascripts/admin.js.erb $app_dir/tmp/javascripts/admin.js.erb
+cp $app_dir/app/assets/javascripts/admin.js.erb $app_dir/scripts/tmp/javascripts/admin.js.erb
 rm $app_dir/app/assets/javascripts/admin.js.erb
 cd $app_dir
 rake assets:precompile RAILS_ENV=production RAILS_GROUPS=assets
