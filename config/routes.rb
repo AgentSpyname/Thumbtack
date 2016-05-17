@@ -22,11 +22,8 @@ Rails.application.routes.draw do
     delete 'admin/pages/*id', to: "pages#destroy"
     get 'admin/pages/*id', to: "pages#show", as:'page', controller: 'PagesController'
   end
-
   get '/admin' => "admin#index"
-
   get '/admin/views' => "admin#views"
-
   resources :templates, path: '/admin/templates'
   root 'pages#homepage'
   resources :layouts, path: '/admin/layouts'
