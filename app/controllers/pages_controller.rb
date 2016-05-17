@@ -102,11 +102,13 @@ class PagesController < ApplicationController
         @monologue_current_user ||= Monologue::User.find(session[:monologue_user_id]) if session[:monologue_user_id]
        end
 
-
     def check_role
-      if monologue_current_user.role == "admin" or monologue_current_user.role == "cm"
-      else
-        redirect_to "/admin/"
+        if monologue_current_user.nil?
+        else
+        if monologue_current_user.role == "admin" or monologue_current_user.role == "cm"
+        else
+          redirect_to "/admin/"
+        end
       end
-    end
+  end
   end

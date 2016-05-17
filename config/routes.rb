@@ -12,7 +12,7 @@ end
 
 Rails.application.routes.draw do
   
-  
+  get '/search' => "posts#index"
   resources :app_data, path: '/admin/widgets', except: [:show, :new]
   resources :pages, id: /[0-9]+\/.+/, only: [:index, :new, :create], format: false, path: '/admin/pages/'
   scope format: false do
@@ -27,9 +27,9 @@ Rails.application.routes.draw do
 
   get '/admin/views' => "admin#views"
 
-  resources :templates
+  resources :templates, path: '/admin/templates'
   root 'pages#homepage'
-  resources :layouts
+  resources :layouts, path: '/admin/layouts'
 
   #Mount the Monologue Engine
   mount Monologue::Engine, at: '/' 

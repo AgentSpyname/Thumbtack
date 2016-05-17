@@ -36,6 +36,9 @@ class Monologue::Post < ActiveRecord::Base
     
   end
 
+  def self.search(search)
+      where("title LIKE ?", "%#{search}%")
+  end
     
   def tag_list= tags_attr
     self.tag!(tags_attr.split(","))

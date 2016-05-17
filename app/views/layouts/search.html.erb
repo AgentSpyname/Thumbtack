@@ -1,0 +1,5 @@
+<%= render 'layouts/menubar' %>
+<%=  Liquid::Template.parse(@layout).
+      render("page_content" => yield).html_safe %>
+
+
