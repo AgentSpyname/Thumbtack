@@ -21,10 +21,13 @@ class Page < ActiveRecord::Base
   end
   
   def slash_not_allowed
-  if self.nested.start_with?('/')
-    errors.add(:nested, "cannot start with a slash")
+    if self.nested == "/"
+    else
+      if self.nested.start_with?('/')
+        errors.add(:nested, "cannot start with a slash")
+      end
+    end
   end
-end
   before_save do
    
     if self.layout.present?
