@@ -29,7 +29,7 @@ class AppDataController < ApplicationController
 
     respond_to do |format|
       if @app_datum.save
-        format.html { redirect_to @app_datum, notice: 'App datum was successfully created.' }
+        format.html { redirect_to app_data_path , notice: 'App datum was successfully created.' }
         format.json { render :show, status: :created, location: @app_datum }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class AppDataController < ApplicationController
   def update
     respond_to do |format|
       if @app_datum.update(app_datum_params)
-        format.html { redirect_to @app_datum, notice: 'App datum was successfully updated.' }
+        format.html { redirect_to app_data_path , notice: 'App datum was successfully updated.' }
         format.json { render :show, status: :ok, location: @app_datum }
       else
         format.html { render :edit }
