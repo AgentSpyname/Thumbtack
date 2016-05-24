@@ -37,7 +37,7 @@ heroku run rails runner "Template.create(:name => 'Homepage Layout', :content =>
 sleep 10
 heroku run rails runner "Page.create(:name => 'Homepage', :nested => '/', :slug => 'homepage', :static => true, :content => '', :homepage => true, :template_id => Template.where(:name => 'Homepage Layout').last.id)"
 sleep 5
-heroku run rails runner "Monologue::User.create(name: 'admin', email:'admin@example.com', password:'admin', password_confirmation: 'admin')"
+heroku run rails runner "Monologue::User.create(name: 'admin', email:'admin@example.com', password:'admin', password_confirmation: 'admin', role: 'admin')"
 
 echo "Heroku Datbase preperation complete."
 echo "Recompiling assets....."
