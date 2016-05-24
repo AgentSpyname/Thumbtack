@@ -1,5 +1,6 @@
 class Page < ActiveRecord::Base
     validates_uniqueness_of :slug
+    validates_presence_of :nested
     has_many :posts, :class_name => "Monologue::Post", :foreign_key => "page_id"
     belongs_to :layout
     belongs_to :template
@@ -18,6 +19,7 @@ class Page < ActiveRecord::Base
   end
   
   before_save do
+   
     if self.layout.present?
     else
       self.layout_id = Layout.where(:name => "Main Layout").last.id
