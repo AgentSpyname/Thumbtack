@@ -8,6 +8,7 @@ class Monologue::Post < ActiveRecord::Base
   belongs_to :layout
   belongs_to :template
   
+  
 
   scope :default,  -> {order("published_at DESC, monologue_posts.created_at DESC, monologue_posts.updated_at DESC") }
   scope :published, -> { default.where(published: true).where("published_at <= ?", DateTime.now) }

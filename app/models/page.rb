@@ -1,6 +1,7 @@
 class Page < ActiveRecord::Base
     validates_uniqueness_of :slug
     validates_presence_of :nested
+    validates_presence_of :name
     has_many :posts, :class_name => "Monologue::Post", :foreign_key => "page_id"
     belongs_to :layout
     belongs_to :template

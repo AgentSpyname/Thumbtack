@@ -3,13 +3,12 @@ class PagesController < ApplicationController
   layout :set_layout, only: [:show, :homepage]
   impressionist :actions=>[:homepage]
   before_action :check_role, except: :show
-
+  layout 'admin/application', only: [:create, :update, :index, :new, :edit]
 
   # GET /pages
   # GET /pages.json
   def index
     @pages = Page.all
-    render :layout => 'admin/application'
   end
 
   # GET /pages/1
@@ -27,12 +26,10 @@ class PagesController < ApplicationController
   # GET /pages/new
   def new
     @page = Page.new
-    render :layout => 'admin/application'
   end
 
   # GET /pages/1/edit
   def edit
-    render :layout => 'admin/application'
   end
 
   # POST /pages
@@ -45,7 +42,7 @@ class PagesController < ApplicationController
         format.html { redirect_to @page, notice: 'Page was successfully created.' }
         format.json { render :show, status: :created, location: @page }
       else
-        format.html { render :new }
+        format.html { render :new}
         format.json { render json: @page.errors, status: :unprocessable_entity }
       end
     end
