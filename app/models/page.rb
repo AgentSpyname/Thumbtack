@@ -14,7 +14,7 @@ class Page < ActiveRecord::Base
   end
   
   def give_nested
-    "#{self.slug}" 
+      "#{self.slug}"
   end
   
   before_save do
@@ -36,8 +36,12 @@ class Page < ActiveRecord::Base
     
      if self.slug.present?
     else
-      self.slug = "#{self.nested}/#{self.name.parameterize}"
-    end
+      if self.nested == "/"
+        self.slug = "#{self.name.parameterize}"
+      else
+        self.slug = "#{self.nested}/#{self.name.parameterize}"
+      end
+     end
     
   end
 end
