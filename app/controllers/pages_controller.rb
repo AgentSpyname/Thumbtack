@@ -1,6 +1,5 @@
 class PagesController < ApplicationController
   before_action :set_page, only: [:show, :edit, :update, :destroy]
-  layout :set_layout, only: [:show, :homepage]
   impressionist :actions=>[:homepage]
   before_action :check_role, except: :show
   layout 'admin/application', only: [:create, :update, :index, :new, :edit]
@@ -15,11 +14,14 @@ class PagesController < ApplicationController
   # GET /pages/1.json
   def show
     @other_pages = Page.where(:nested => @page.name.downcase)
+        render :layout => @page.layout_name
+
   end
   
   
   def homepage
     @page = Page.where(:homepage => true).last
+    render :layout => @page.layout_name
     impressionist(@page, "Homepage")#Tracks views for the post
   end
 
@@ -78,10 +80,7 @@ class PagesController < ApplicationController
       @page = Page.find_by_slug(params[:id])
     end
     
-    def set_layout
-      (@page && @page.layout_name) || 'application'
 
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def page_params
