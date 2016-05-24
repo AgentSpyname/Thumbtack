@@ -70,7 +70,7 @@ class AppDataController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def app_datum_params
-      params.fetch(:app_datum, {})
+      params.require(:app_datum).permit(:contents)
     end
             
      def authenticate_user!
