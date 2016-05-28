@@ -17,8 +17,10 @@ class ApplicationController < ActionController::Base
       @widget8 =  AppDatum.where(:name => "Widget8").last.contents
       @widget9 =  AppDatum.where(:name => "Widget9").last.contents
       @widget10 =  AppDatum.where(:name => "Widget10").last.contents
-      @footer = AppDatum.where(:footer => "Footer")
+      @footer = AppDatum.where(:name => "Footer").last.contents
+
       @menu_items = Page.where(:menu => true)
+      @selected_post_items = SelectedPost.all
       
 
     end

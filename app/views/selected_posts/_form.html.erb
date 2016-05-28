@@ -1,0 +1,21 @@
+<br/>
+<%= form_for(@selected_post) do |f| %>
+    <% if @selected_post.errors.any? %>
+    <div id="error_explanation">
+      <% @selected_post.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= message %>
+      </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :post_id, "Select a post to be featured:" %><br>
+    <%= f.collection_select(:post_id, Monologue::Post.all, :id, :title, {:prompt=>true}, {:class=>'form-control'}) %>
+  </div><br/>
+  <div class="actions">
+    <%= f.submit "Save", class: 'btn btn-success' %>
+  </div>
+<% end %>

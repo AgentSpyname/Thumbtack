@@ -1,0 +1,4 @@
+<% @array_selected_posts = Array.new %>
+<% @selected_post_items.each do |item| %>
+    <%  @array_selected_posts.push({"post_title" => item.post.title, "post_author" => item.post.user.name, "post_url" => item.post.full_url }) %>
+<% end %>

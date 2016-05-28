@@ -1,0 +1,40 @@
+
+ <section class="content-header">
+      <h1>
+       All Selected Posts
+        <small><%= @app_name %></small>
+      </h1>
+      <ol class="breadcrumb">
+         <li><%= link_to admin_path do %><i class="fa fa-dashboard"></i>Dashboard<% end %></li>
+        <li><%= link_to "/admin/monologue" do %>Posts</li><% end %>
+        <li class="active"><%= link_to "/admin/selected_posts/" do %>Selected Posts</li><% end %>
+      </ol>
+    </section>
+
+<div class="col-lg-12 col-xs-12">
+<table class="table">
+  <thead>
+    <tr>
+      <th>Post Title</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @selected_posts.each do |selected_post| %>
+      <tr>
+        <td><%= selected_post.post.title %></td>
+        <td><%= link_to 'Show', selected_post.post.full_url %></td>
+        <td><%= link_to 'Edit', edit_selected_post_path(selected_post) %></td>
+        <td><%= link_to 'Destroy', selected_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Selection', new_selected_post_path , class: 'btn btn-success' %>
+</div>
+
+

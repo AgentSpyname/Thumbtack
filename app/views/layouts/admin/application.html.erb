@@ -49,6 +49,8 @@
           <ul class="treeview-menu">
             <li><%= link_to "/monologue/" do %><i class="fa fa-circle-o"></i>All Posts<% end %></li>
             <li><%= link_to "/monologue/posts/new" do %><i class="fa fa-circle-o"></i>New Post<% end %></li>
+            <li><%= link_to "/admin/selected_posts/" do %><i class="fa fa-circle-o"></i>Selected Posts<% end %></li>
+
             </ul>
         </li>
         
@@ -113,6 +115,8 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
+    <p id="notice"><%= notice %></p>
+
 <%= yield %>
   </div>
   <!-- /.content-wrapper -->

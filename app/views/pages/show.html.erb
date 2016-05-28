@@ -1,3 +1,4 @@
+<%= render 'layouts/selected_posts' %>
 <%=  Liquid::Template.parse(@page.template.content).
       render(list()).html_safe %>
 

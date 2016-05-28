@@ -7,6 +7,7 @@ class Monologue::Post < ActiveRecord::Base
   belongs_to :page, :class_name => "::Page"
   belongs_to :layout
   belongs_to :template
+  has_many :selected_posts, :class_name => "::SelectedPost"
   
   
 
@@ -103,4 +104,7 @@ class Monologue::Post < ActiveRecord::Base
   def url_do_not_start_with_slash
     errors.add(:url, I18n.t("activerecord.errors.models.monologue/post.attributes.url.start_with_slash")) if self.url.start_with?("/")
   end
+  
+ 
+    
 end

@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Post:</strong>
+  <%= @selected_post.post_id %>
+</p>
+
+<%= link_to 'Edit', edit_selected_post_path(@selected_post) %> |
+<%= link_to 'Back', selected_posts_path %>
