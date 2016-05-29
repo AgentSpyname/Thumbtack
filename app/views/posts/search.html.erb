@@ -1,0 +1,4 @@
+<% @template = ::Template.where(:name => "Search").last.content %>
+<%=  Liquid::Template.parse(@template).render(search_list()
+ ).html_safe %>
+

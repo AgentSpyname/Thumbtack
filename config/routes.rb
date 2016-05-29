@@ -13,7 +13,7 @@ end
 Rails.application.routes.draw do
 
   resources :selected_posts, path: '/admin/selected_posts/', except: [:show]
-  get '/search' => "posts#index"
+  get '/search' => "posts#search"
   resources :app_data, path: '/admin/widgets', except: [:show, :new]
   resources :pages, id: /[0-9]+\/.+/, only: [:index, :new, :create], format: false, path: '/admin/pages/'
   scope format: false do
