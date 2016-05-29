@@ -17,6 +17,6 @@ module PagesHelper
    
             
         
-        { "posts" => post_list_items, "pagetitle" => @page.name, "pages" => page_list_items, "widget1" => @widget1, "widget2" => @widget2, "widget3" => @widget3, "widget4" => @widget4, "widget5" => @widget5, "widget6" => @widget6, "widget7" => @widget7, "widget8" => @widget8, "widget9" => @widget9, "widget10" => @widget10, "footer" => @footer, "selected_posts" => @array_selected_posts }
+        { "posts" => post_list_items, "pagetitle" => @page.name, "pages" => page_list_items, "widget1" => @widget1, "widget2" => @widget2, "widget3" => @widget3, "widget4" => @widget4, "widget5" => @widget5, "widget6" => @widget6, "widget7" => @widget7, "widget8" => @widget8, "widget9" => @widget9, "widget10" => @widget10, "footer" => @footer, "selected_posts" => @array_selected_posts, "menu_list_items" => @menu_list_items }
     end
 end

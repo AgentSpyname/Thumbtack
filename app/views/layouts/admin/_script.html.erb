@@ -1,6 +1,18 @@
-<%= javascript_include_tag "monologue/admin/application" %>
+
+<script src="https://rawgit.com/cheef/jquery-ace/master/ace/ace.js"></script>
+<script src="https://rawgit.com/cheef/jquery-ace/master/ace/theme-twilight.js"></script>
+<script src="https://rawgit.com/cheef/jquery-ace/master/ace/mode-ruby.js"></script>
+<script src="https://rawgit.com/cheef/jquery-ace/master/ace/mode-liquid.js"></script>
+<script src="https://rawgit.com/cheef/jquery-ace/master/jquery-ace.min.js"></script>
+
+<script>
+  $('.code-area').ace({ theme: 'twilight', lang: 'liquid' });
+</script>
+
+<% javascript_include_tag "monologue/admin/application" %>
+<%= javascript_include_tag 'application' %>
 <!-- jQuery 2.2.0 -->
-<script src="https://rawgit.com/almasaeed2010/AdminLTE/master/plugins/jQuery/jQuery-2.2.0.min.js"></script>
+
 <!-- jQuery UI 1.11.4 -->
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -32,6 +44,4 @@
 <script src="https://rawgit.com/almasaeed2010/AdminLTE/master/plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="https://rawgit.com/almasaeed2010/AdminLTE/master/dist/js/app.min.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<%= javascript_include_tag 'admin.js' %>
 

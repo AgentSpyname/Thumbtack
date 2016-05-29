@@ -2,6 +2,8 @@ class LayoutsController < ApplicationController
   before_action :set_layout, only: [:show, :edit, :update, :destroy]
   before_action :true_admin
   layout 'admin/application'
+  prepend_view_path('app/views/layouts_action')
+
   # GET /layouts
   # GET /layouts.json
   def index
@@ -91,5 +93,13 @@ class LayoutsController < ApplicationController
         redirect_to "/admin/"
       end
     end
+    
+    
+  #As Rails has a folder named Layouts, we want to store the views somewhere else to avoid confusion. 
+  def render(*args)
+    options = args.extract_options!
+    options[:template] = "/layouts_action/#{params[:action]}"
+    super(*(args << options))
+  end
 end
 
