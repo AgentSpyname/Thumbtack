@@ -21,6 +21,8 @@ class ApplicationController < ActionController::Base
 
       @menu_items = Page.where(:menu => true)
       @selected_post_items = SelectedPost.all
+      @all_settings = Setting.all
+
       
 
     end
