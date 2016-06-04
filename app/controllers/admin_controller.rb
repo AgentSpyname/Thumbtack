@@ -7,7 +7,7 @@ class AdminController < ApplicationController
          @posts = Monologue::Post.all.paginate(:page => params[:page])
          @all_posts = Monologue::Post.all
          @last_post = Monologue::Post.all.last
-
+         @activites = PublicActivity::Activity.order("created_at DESC").limit(10)
     end
     
     def views

@@ -55,3 +55,5 @@ gem 'morrisjs-rails'
 gem 'raphael-rails'
 gem 'rails_12factor', group: :production
 
+gem 'will_paginate-bootstrap'
+gem 'public_activity'

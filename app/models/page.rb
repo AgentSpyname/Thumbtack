@@ -7,6 +7,8 @@ class Page < ActiveRecord::Base
     belongs_to :layout
     belongs_to :template
   is_impressionable
+    include PublicActivity::Model
+    tracked :only => [ :update, :destroy, :create],  owner: Proc.new{ |controller, model| controller.current_user }
 
   def to_param
     slug

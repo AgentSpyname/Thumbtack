@@ -1,0 +1,38 @@
+ <!-- Chat box -->
+          <div class="box box-success">
+            <div class="box-header">
+              <i class="fa fa-comments-o"></i>
+
+              <h3 class="box-title">Activity Feed</h3>
+
+              <div class="box-tools pull-right" data-toggle="tooltip" title="Status">
+                
+            </div>
+            <div class="box-body chat" id="chat-box">
+              <!-- chat item -->
+              
+              <% @activites.each do |activity| %>
+              <div class="item">
+                   <%= image_tag avatar_url(activity.owner), class:'img-circle' %>
+
+                <p class="message">
+                  <a href="#" class="name">
+                    <small class="text-muted pull-right"><i class="fa fa-clock-o"></i><%= activity.created_at.strftime("%m-%d-%y:%H:%M") %></small>
+                    <%= activity.owner.name %> 
+                  </a>
+                 <%= check_type_of_activity(activity)   %>
+                 
+            
+                
+                </p>
+               
+                <!-- /.attachment -->
+              </div>
+              <!-- /.item -->
+              <!-- chat item -->
+              <% end %>
+             
+            
+            
+          </div>
+          <!-- /.box (chat box) -->

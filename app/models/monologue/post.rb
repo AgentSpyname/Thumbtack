@@ -9,7 +9,10 @@ class Monologue::Post < ActiveRecord::Base
   belongs_to :template
   has_many :selected_posts, :class_name => "::SelectedPost"
   
-  
+  self.per_page = 5
+  include PublicActivity::Model
+  tracked :only => [:update, :destroy, :create], owner: Proc.new{ |controller, model| controller.current_user }
+
 
   scope :default,  -> {order("published_at DESC, monologue_posts.created_at DESC, monologue_posts.updated_at DESC") }
   scope :published, -> { default.where(published: true).where("published_at <= ?", DateTime.now) }
