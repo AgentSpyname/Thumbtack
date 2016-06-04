@@ -1,4 +1,9 @@
+<% tag_list = [{"name" => @tag.name, "url"  => "/tags/#{@tag.name.downcase.parameterize}" } ]%>
+<% tag_post_list = Array.new %>
+<% @tag.posts.each do |post| %>
+<%= tag_post_list.push({"title" => post.title, "full_url" => post.full_url, "author_name" => post.user.name}) %>
+<% end %>
 <%=  Liquid::Template.parse(::Template.where(:name => "Tag Page").last.content).
-      render({}).html_safe %>
+      render({"tag_name" => @tag.name, "posts"=> tag_post_list}  ).html_safe %>
 
 

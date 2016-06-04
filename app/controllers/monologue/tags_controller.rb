@@ -1,4 +1,5 @@
 class Monologue::TagsController < Monologue::ApplicationController
+    layout 'layouts/tagcustom'
   def show
 
     @tag = retrieve_tag
