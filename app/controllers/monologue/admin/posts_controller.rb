@@ -19,7 +19,7 @@ class Monologue::Admin::PostsController < Monologue::Admin::BaseController
     @post.user_id = monologue_current_user.id
     @post.published_at = Time.zone.now
     # render it exactly as it would display when live.
-    render "/monologue/posts/show", layout: Monologue::Config.layout || "/layouts/monologue/application"
+    render "/monologue/posts/show", layout: Monologue::Config.layout || "/layouts/postcustom"
   end
 
   def create

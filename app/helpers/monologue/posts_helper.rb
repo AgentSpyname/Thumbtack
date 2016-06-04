@@ -5,7 +5,7 @@ module Monologue
             post_tag_list_items = Array.new
             
             @post.tags.each do |tag|
-                post_tag_list_items.push({"name" => tag.name})
+                post_tag_list_items.push({"name" => tag.name, "url" => "#{Monologue::Engine.routes.url_helpers.root_path}tags/#{URI.encode(tag.name.mb_chars.to_s.downcase)}"})
             end
                 
             { "post" => the_post_list_items, "tags" => post_tag_list_items}
