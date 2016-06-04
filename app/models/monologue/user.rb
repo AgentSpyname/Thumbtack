@@ -1,16 +1,25 @@
 class Monologue::User < ActiveRecord::Base
   has_many :posts
-
+  
   has_secure_password
   
   include PublicActivity::Model
-  tracked :only => [ :update, :destroy, :create], owner: Proc.new{ |controller, model| controller.current_user }
 
+  
+  
   validates_presence_of :password, on: :create
   validates_presence_of :name
   validates :email , presence: true, uniqueness: true
+  validates_presence_of :slug
+ 
 
+  def to_param
+  slug
+end
 
+def username
+  self.name.downcase.gsub(" ", "-")
+end
   def can_delete?(user)
     return false if self==user
     return false if user.posts.any?

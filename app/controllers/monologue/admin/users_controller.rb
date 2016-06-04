@@ -13,6 +13,7 @@ class Monologue::Admin::UsersController < Monologue::Admin::BaseController
   def update
     if @user.update user_params
       flash.notice = "User modified"
+      @user.create_activity :create, owner: current_user
       redirect_to admin_users_path
     else
       render :edit
@@ -21,6 +22,7 @@ class Monologue::Admin::UsersController < Monologue::Admin::BaseController
 
   def destroy
     if @user.destroy
+       @user.create_activity :create, owner: current_user
       redirect_to admin_users_path, notice:  I18n.t("monologue.admin.users.delete.removed", user: @user.name)
     else
       redirect_to admin_users_path, alert: I18n.t("monologue.admin.users.delete.failed", user: @user.name)
@@ -30,6 +32,7 @@ class Monologue::Admin::UsersController < Monologue::Admin::BaseController
   def create
     @user = Monologue::User.new user_params
     if @user.save
+       @user.create_activity :create, owner: current_user
       flash.notice = I18n.t("monologue.admin.users.create.success")
       redirect_to admin_users_path
     else

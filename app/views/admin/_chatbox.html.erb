@@ -13,12 +13,12 @@
               
               <% @activites.each do |activity| %>
               <div class="item">
-                   <%= image_tag avatar_url(activity.owner), class:'img-circle' %>
+                  <%= image_tag avatar_url(activity.owner), class:'img-circle' %>
 
                 <p class="message">
                   <a href="#" class="name">
                     <small class="text-muted pull-right"><i class="fa fa-clock-o"></i><%= activity.created_at.strftime("%m-%d-%y:%H:%M") %></small>
-                    <%= activity.owner.name %> 
+                 <%= activity.owner.name %> 
                   </a>
                  <%= check_type_of_activity(activity)   %>
                  
