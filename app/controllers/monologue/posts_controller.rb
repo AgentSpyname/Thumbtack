@@ -18,6 +18,8 @@ class Monologue::PostsController < Monologue::ApplicationController
        @rendered = true
        @other_pages = Page.where(:nested => @page.name.downcase)
        render :template => 'pages/show', :layout => @page.layout_name
+       
+       
 
     else
       impressionist(@post)#Tracks views for the post
