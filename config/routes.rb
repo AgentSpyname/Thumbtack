@@ -1,4 +1,6 @@
 Monologue::Engine.routes.draw do
+  get 'authors/:id' => "users#show"
+
 match '/admin/settings/all/edit' => 'settings#edit_all', :as => :edit_all, :via => :get
 match '/admin/settings/all/update' => 'settings#update_all', :as => :update_all, :via => :put
 
@@ -14,6 +16,8 @@ end
 end
 
 Rails.application.routes.draw do
+
+  get 'authors/:id' => "users#show"
 
 match '/admin/settings/all/edit' => 'settings#edit_all', :as => :edit_all, :via => :get
 match '/admin/settings/all/update' => 'settings#update_all', :as => :update_all, :via => :put

@@ -26,6 +26,7 @@ class Monologue::Admin::PostsController < Monologue::Admin::BaseController
     @post = Monologue::Post.new post_params
     @post.user_id = monologue_current_user.id
     if @post.save
+       @post.create_activity :create, owner: current_user
       prepare_flash_and_redirect_to_edit()
     else
       render :new
@@ -37,6 +38,7 @@ class Monologue::Admin::PostsController < Monologue::Admin::BaseController
 
   def update
     if @post.update(post_params)
+       @post.create_activity :create, owner: current_user
       prepare_flash_and_redirect_to_edit()
     else
       render :edit
@@ -46,6 +48,7 @@ class Monologue::Admin::PostsController < Monologue::Admin::BaseController
   def destroy
     post = Monologue::Post.find(params[:id])
     if post.destroy
+       post.create_activity :create, owner: current_user
       redirect_to admin_posts_path, notice:  I18n.t("monologue.admin.posts.delete.removed")
     else
       redirect_to admin_posts_path, alert: I18n.t("monologue.admin.posts.delete.failed")

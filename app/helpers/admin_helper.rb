@@ -1,8 +1,11 @@
 module AdminHelper
     def avatar_url(user)
+       
+    default_url = "#{root_url}images/profiles/#{user.username}.png"
     gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
-    "http://gravatar.com/avatar/#{gravatar_id}.png?s=48"
+    "http://gravatar.com/avatar/#{gravatar_id}.png?s=48&d=#{CGI.escape(default_url)}"
     end
+
     
     def count_views(posts)
         total_views = 0;

@@ -11,7 +11,7 @@ class Monologue::Post < ActiveRecord::Base
   
   self.per_page = 5
   include PublicActivity::Model
-  tracked :only => [:update, :destroy, :create], owner: Proc.new{ |controller, model| controller.current_user }
+  
 
 
   scope :default,  -> {order("published_at DESC, monologue_posts.created_at DESC, monologue_posts.updated_at DESC") }

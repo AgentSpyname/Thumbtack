@@ -1,0 +1,6 @@
+<%= render 'layouts/selected_posts' %>
+
+<%=  Liquid::Template.parse(::Template.where(:name => "Show User").last.content).
+      render(user_list()).html_safe %>
+
+

@@ -41,6 +41,7 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       if @page.save
+         @page.create_activity :create, owner: current_user
         format.html { redirect_to @page, notice: 'Page was successfully created.' }
         format.json { render :show, status: :created, location: @page }
       else
@@ -55,6 +56,7 @@ class PagesController < ApplicationController
   def update
     respond_to do |format|
       if @page.update(page_params)
+        @page.create_activity :create, owner: current_user
         format.html { redirect_to @page, notice: 'Page was successfully updated.' }
         format.json { render :show, status: :ok, location: @page }
       else
@@ -66,8 +68,10 @@ class PagesController < ApplicationController
 
   # DELETE /pages/1
   # DELETE /pages/1.json
-  def destroy
+  def destroy 
+    @page.create_activity :create, owner: current_user
     @page.destroy
+
     respond_to do |format|
       format.html { redirect_to pages_url, notice: 'Page was successfully destroyed.' }
       format.json { head :no_content }
