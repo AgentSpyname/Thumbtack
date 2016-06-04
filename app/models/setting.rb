@@ -6,4 +6,8 @@ class Setting < ActiveRecord::Base
             return true
         end
     end
+    
+    def html_id
+        return self.name.downcase.gsub("", "-")
+    end
 end

@@ -1,12 +1,12 @@
 
 <script src="https://rawgit.com/cheef/jquery-ace/master/ace/ace.js"></script>
-<script src="https://rawgit.com/cheef/jquery-ace/master/ace/theme-twilight.js"></script>
+<script src="https://rawgit.com/cheef/jquery-ace/master/ace/theme-<%= @all_settings.where(:name => "Ace Editor Style").last.contents %>.js"></script>
 <script src="https://rawgit.com/cheef/jquery-ace/master/ace/mode-ruby.js"></script>
 <script src="https://rawgit.com/cheef/jquery-ace/master/ace/mode-liquid.js"></script>
 <script src="https://rawgit.com/cheef/jquery-ace/master/jquery-ace.min.js"></script>
 
 <script>
-  $('.code-area').ace({ theme: 'twilight', lang: 'liquid' });
+  $('.code-area').ace({ theme: '<%= @all_settings.where(:name => "Ace Editor Style").last.contents %>', lang: 'liquid' });
 </script>
 
 <%= javascript_include_tag "monologue/admin/application" %>

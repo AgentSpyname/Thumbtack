@@ -26,6 +26,9 @@ module AdminHelper
         count == 1 ? "#{noun}#{text}" : "#{noun.pluralize}#{text}"
      end
     end
+    
+   #def valid_ace_config(x)
+    
 
     def post_time_colour(views)
         avg = 0
