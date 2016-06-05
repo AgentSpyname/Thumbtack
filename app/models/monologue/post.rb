@@ -25,19 +25,12 @@ class Monologue::Post < ActiveRecord::Base
   validate :url_do_not_start_with_slash
   
   before_save do
-    if self.layout_id.nil?
-      self.layout_id = ::Layout.where(:name => "Post Layout").first.id
-    end
-    
+  
+     self.layout_name = "pagecustom"
     if self.template_id.nil?
       self.template_id =  ::Template.where(:name => "Show Posts").first.id
     end
     
-    if self.layout.name.present?
-      self.layout_name = "postcustom"
-    else
-      self.layout_name = "application"
-    end
     
   end
 
