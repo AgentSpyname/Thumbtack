@@ -15,7 +15,7 @@ module PagesHelper
         if @page.name != "Homepage"
             page_title = @page.name + " |" + @app_name
         else
-            page_title = @appname
+            page_title = @app_name
         end
         
         @menu_items.each do |item|

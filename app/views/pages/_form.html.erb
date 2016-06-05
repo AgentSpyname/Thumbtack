@@ -43,11 +43,7 @@
     <%= f.text_area :content, class: 'form-control', class: 'code-area', rows: 40   %>
   </div>
   
-    <div class="field" id="layout_selection">
-    <%= f.label :layout_id %><br/>
-    <%= f.collection_select(:layout_id, Layout.all, :id, :name, {prompt: true, class: "dropdown-menu"}) %>
-  </div>
-
+    
   
   <div class="field">
     <%= f.label :postable %><br>

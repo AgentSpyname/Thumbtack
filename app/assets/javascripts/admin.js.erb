@@ -4,17 +4,18 @@ new Morris.Line({
   element: 'views-chart',
   // Chart data records -- each entry in this array corresponds to a point on
   // the chart.
-  <% time_now = Time.now.strftime("%Y-%m-%d") %>
+  <% time_now = Time.zone.now.strftime("%Y-%m-%d") %>
   <% @homepage = Page.where(:name => "Homepage").last %> 
   <% today_views = @homepage.impressionist_count(:message => "Homepage", :start_date=>time_now) %>
   
      
  data: [
  <% 31.times do |i| %> 
- <% t = Time.now - i.days %>
+ <% t = Time.zone.now - i.days %>
+ <% td = t + 1.day %>
  <% if i == 0 %>
  <% else %>
-  { day: '<%= t.strftime("%Y-%m-%d") %>', value: <%=  @homepage.impressionist_count(:message => "Homepage", :start_date=>t.strftime("%Y-%m-%d"), :end_date =>t.strftime("%Y-%m-%d")) %> },
+  { day: '<%= t.strftime("%Y-%m-%d") %>', value: <%=  @homepage.impressionist_count(:message => "Homepage", :start_date=>t.strftime("%Y-%m-%d"), :end_date =>td.strftime("%Y-%m-%d")) %> },
  <% end %>
  <% end %>
     { day: '<%= time_now %>', value: <%= today_views %> }
