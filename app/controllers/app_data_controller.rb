@@ -87,7 +87,7 @@ class AppDataController < ApplicationController
     def check_role
       if monologue_current_user.role == "admin" or monologue_current_user.role == "cm"
       else
-        redirect_to "/admin/"
+        redirect_to "/admin/", :notice => "You do not have permission to acesss this page."
       end
     end
     

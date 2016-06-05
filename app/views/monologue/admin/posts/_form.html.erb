@@ -8,10 +8,16 @@ You do not have permission to create/modify posts.
 <%= post.text_field :published_at, class: 'form-control', label:  t(".published_at"), data: {datepicker: "datepicker"}, value: post.object.published_at.nil? ? "" : post.object.published_at.strftime("%Y-%m-%d") %>
 <b>Tags:</b><div><%= post.text_field :tag_list, style: 'style="list-style-type: none;'%></div>
 <%= post.collection_select(:page_id, Page.where(:postable => true).all, :id, :slug, {:prompt=>true}, {:class=>'form-control'}) %>
+
+<% if monologue_current_user.role == "writer" %>
+<%= post.collection_select(:template_id, ::Template.all, :id, :name, {:prompt=>true}, {:class=>'form-control', :disabled => true} ) %>
+<% else %>
 <%= post.collection_select(:template_id, ::Template.all, :id, :name, {:prompt=>true}, {:class=>'form-control'}) %>
+<% end %>
 
 <div class="checkbox">
 <% if monologue_current_user.role == "marketing" or monologue_current_user.role == "writer"  %>
+You can not publish this post
 <% else %>
 <%= post.check_box :published, label:  t(".published") %>
 <% end %>

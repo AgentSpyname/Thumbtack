@@ -24,7 +24,7 @@ module PagesHelper
             
     
         if @page.postable?
-            @page.posts.each do |post|
+            @posts.each do |post|
                 post_list_items.push({"title" => post.title, "created_at" => post.created_at, "url" => post.url, "content" => post.content, "full_url" => post.full_url })
             end
         end

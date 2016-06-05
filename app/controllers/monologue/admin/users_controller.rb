@@ -46,10 +46,10 @@ class Monologue::Admin::UsersController < Monologue::Admin::BaseController
 
   private
     def load_user
-      @user = Monologue::User.find(params[:id])
+      @user = Monologue::User.find_by_slug(params[:id])
     end
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :role)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :role, :slug)
     end
 end

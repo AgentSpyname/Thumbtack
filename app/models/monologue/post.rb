@@ -23,6 +23,7 @@ class Monologue::Post < ActiveRecord::Base
   validates :title, :content, :url, :published_at, presence: true
   validates :url, uniqueness: true
   validate :url_do_not_start_with_slash
+  validate :post_creation_permissions
   
   before_save do
   
@@ -32,6 +33,14 @@ class Monologue::Post < ActiveRecord::Base
     end
     
     
+  end
+  
+  def post_creation_permissions
+    if self.user.role == "writer" 
+      if published_changed? && self.persisted?
+        errors.add(:published, "You do not have permission to publish posts.")
+      end
+    end
   end
 
   def self.search(search)

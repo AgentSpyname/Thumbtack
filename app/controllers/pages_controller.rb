@@ -14,7 +14,8 @@ class PagesController < ApplicationController
   # GET /pages/1.json
   def show
     @other_pages = Page.where(:nested => @page.name.downcase)
-        render :layout => @page.layout_name
+    @posts = @page.posts.where(:published => true)
+    render :layout => @page.layout_name
 
   end
   
@@ -107,7 +108,7 @@ class PagesController < ApplicationController
         else
         if monologue_current_user.role == "admin" or monologue_current_user.role == "cm"
         else
-          redirect_to "/admin/"
+          redirect_to "/admin/", :notice => "You do not have permission to acesss this page."
         end
       end
   end

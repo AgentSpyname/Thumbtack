@@ -87,7 +87,7 @@ class TemplatesController < ApplicationController
     def true_admin
       if monologue_current_user.role == "admin"
       else
-        redirect_to "/admin/"
+        redirect_to "/admin/", :notice => "You do not have permission to acesss this page."
       end
     end
 end

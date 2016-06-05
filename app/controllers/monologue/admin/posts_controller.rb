@@ -19,7 +19,7 @@ class Monologue::Admin::PostsController < Monologue::Admin::BaseController
     @post.user_id = monologue_current_user.id
     @post.published_at = Time.zone.now
     # render it exactly as it would display when live.
-    render "/monologue/posts/show", layout: Monologue::Config.layout || "/layouts/postcustom"
+    render "/monologue/posts/show", :layout => "postcustom"
   end
 
   def create
@@ -70,6 +70,6 @@ private
   end
 
   def post_params
-    params.require(:post).permit(:published, :tag_list,:title,:content,:url,:published_at,:page_id, :layout_name, :layout_id, :template_id)
+    params.require(:post).permit(:published, :tag_list,:title,:content,:url,:published_at,:page_id, :layout_name, :template_id)
   end
 end
