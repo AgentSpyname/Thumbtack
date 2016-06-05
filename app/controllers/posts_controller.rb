@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-    layout 'layouts/search'
+    layout 'layouts/pagecustom'
     def search
         @posts = Monologue::Post.search(params[:search])
     end

@@ -1,9 +1,13 @@
+<%= render 'layouts/menubar' %>
+<%= render 'layouts/selected_posts' %>
+
 <% tag_list = [{"name" => @tag.name, "url"  => "/tags/#{@tag.name.downcase.parameterize}" } ]%>
 <% tag_post_list = Array.new %>
 <% @tag.posts.each do |post| %>
-<%= tag_post_list.push({"title" => post.title, "full_url" => post.full_url, "author_name" => post.user.name}) %>
+<% tag_post_list.push({"title" => post.title, "full_url" => post.full_url, "author_name" => post.user.name}) %>
 <% end %>
+
 <%=  Liquid::Template.parse(::Template.where(:name => "Tag Page").last.content).
-      render({"tag_name" => @tag.name, "posts"=> tag_post_list}  ).html_safe %>
+      render({"tag_name" => @tag.name, "posts"=> tag_post_list, 'pagename' => @tag.name, 'page_title' => "#{@tag.name} | #{@app_name}", 'appname' => @app_name, 'widget1' => @widget1, 'widget2'=> @widget2, 'widget3' => @widget3, 'widget4' => @widget4, 'widget5' => @widget5, 'widget6' => @widget6, 'widget7' => @widget7, 'widget8' => @widget8, 'widget9' => @widget9, 'widget10' => @widget10, "menu_items" => @menu_list_items, "selected_posts" => @array_selected_posts}  ).html_safe %>
 
 

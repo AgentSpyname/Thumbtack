@@ -79,7 +79,7 @@ module AdminHelper
         if y.key.include?("monologue_post")
             return get_activity_action(y.key) + y.trackable.title 
         else
-            return  link_to get_activity_action(y.key) + y.trackable.name
+            return   get_activity_action(y.key) + y.trackable.name
         end
     end
 
