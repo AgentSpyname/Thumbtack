@@ -1,6 +1,15 @@
 <div class="col-lg-12 col-xs-12">
-<h1>New Page</h1>
-
+ <section class="content-header">
+      <h1>
+        New Page
+        <small><%= @app_name %></small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><%= link_to "/admin" do %><i class="fa fa-dashboard"></i>Dashboard<% end %></li>
+        <li><%= link_to "/admin/pages/" do %></i>Pages<% end %></li>
+        <li class="active">New Page</li>
+      </ol>
+    </section>
 <%= render 'form' %>
 
 <%= link_to 'Back', pages_path %>

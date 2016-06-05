@@ -10,29 +10,52 @@
       <% end %>
     </div>
   <% end %>
-
   <div class="field">
-    <%= f.label :name %><br/>
+    <%= f.label :name, "Page Title" %><br/>
     <%= f.text_field :name, class: 'form-control' %>
   </div>
   
-  <div class="field">
-    <%= f.label :content %><br/>
-    <%= f.text_area :content, class: 'form-control' %>
-  </div>
-
   <div class="field">
     <%= f.label :nested %><br>
     <%= f.text_field :nested, class: 'form-control' %>
 
   </div>
+  
+   <div class="field">
+    <%= f.label :slug %><br>
+    <%= f.text_field :slug, class: 'form-control' %>
+  </div>
+  
+  
+  <h4>Layout Options</h4>
+    <div class="field">
+    <%= f.label :static, "Static Page?" %><br>
+    <%= f.check_box :static, class: 'checkbox' %>
+    
+    <label for="layout_checkbox">Use Template?</label><br/>
+    <input type="checkbox" for="layout_selection" id="layout_checkbox" />
+  </div>
+  
+  
+  
+  <div class="field" id="custom_layout">
+    <%= f.label :content, "Custom Layout HTML" %><br/>
+    <%= f.text_area :content, class: 'form-control', class: 'code-area', rows: 40   %>
+  </div>
+  
+    <div class="field" id="layout_selection">
+    <%= f.label :layout_id %><br/>
+    <%= f.collection_select(:layout_id, Layout.all, :id, :name, {prompt: true, class: "dropdown-menu"}) %>
+  </div>
+
+  
   <div class="field">
     <%= f.label :postable %><br>
     <%= f.check_box :postable, class: 'chdckbox' %>
   </div>
   
    <div class="field">
-    <%= f.label :homepage %><br>
+    <%= f.label :homepage, "Homepage(This replaces the current homepage with this page.)" %><br>
     <%= f.check_box :homepage, class: 'checkbox' %>
   </div>
   
@@ -41,28 +64,41 @@
     <%= f.check_box :menu,  class: 'chdckbox' %>
   </div>
   
-  <div class="field">
-    <%= f.label :slug %><br>
-    <%= f.text_field :slug, class: 'form-control' %>
-  </div>
+ 
+
+
   
-  <div class="field">
-    <%= f.label :static %><br>
-    <%= f.check_box :static, class: 'checkbox' %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :layout_id %><br/>
-    <%= f.collection_select(:layout_id, Layout.all, :id, :name, {prompt: true, class: "dropdown-menu"}) %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :template_id %><br/>
-    <%= f.collection_select(:template_id, ::Template.all, :id, :name, {prompt: true, class: "dropdown-menu"}) %>
-  </div>
   
 
 <div class="actions">
-    <%= f.submit  %>
+    <%= f.submit "Save", class: 'btn btn-success'  %>
   </div>
 <% end %>
+
+
+<script>
+// A $( document ).ready() block.
+$( document ).ready(function() {
+    $("#custom_layout").hide()
+     $("#layout_selection").hide()
+});
+
+ $('#page_static').click(function() {
+    $("#custom_layout").toggle(this.checked);
+    $("#layout_selection").hide();
+     $('#layout_checkbox').prop('checked', false); 
+});
+  
+   $('#layout_checkbox').click(function() {
+    $("#layout_selection").toggle(this.checked);
+    $("#custom_layout").hide();
+    $('#page_static').prop('checked', false); 
+});
+
+$('#page_homepage').click(function(){
+  $("#page_menu").prop('checked', false);
+  $("#page_postable").prop('checked', false);
+
+});
+
+</script>

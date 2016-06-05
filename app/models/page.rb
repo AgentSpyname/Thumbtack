@@ -30,22 +30,17 @@ class Page < ActiveRecord::Base
     end
   end
   before_save do
+   self.layout_name = "pagecustom"
    
-    if self.layout.present?
+   
+    if self.template.present?  
     else
-      self.layout_id = Layout.where(:name => "Main Layout").last.id
+      if self.content.present? == false
+        self.template_id = Template.where(:name => "Show Pages").last.id
+      end
     end
     
-    if self.template.present?
-    else
-      self.template_id = Template.where(:name => "Show Pages").last.id
-    end
-    
-    if self.layout.present?
-      self.layout_name = "pagecustom"
-    else
-      self.layout_name = "application"
-    end
+   
     
      if self.slug.present?
     else

@@ -1,6 +1,8 @@
 <%= render 'layouts/selected_posts' %>
 
-<%=  Liquid::Template.parse(@page.template.content).
-      render(list()).html_safe %>
-
+<% if @page.template.present? %>
+<%= render 'shared/pagetemplate' %>
+<% else %>
+<%= render 'shared/pagecontent' %>
+<% end %>
 
