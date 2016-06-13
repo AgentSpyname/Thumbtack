@@ -1,0 +1,58 @@
+echo 'Starting Local Dev Setup'
+echo "creating database"
+rake db:create
+echo "Migrating Database"
+rake db:migrate
+echo "Writing base data"
+ rails runner "AppDatum.create(:name => 'Site Title', :contents => 'Thumbtack')"
+
+ rails runner "AppDatum.create(:name => 'Widget1', :contents => '')"
+
+ rails runner "AppDatum.create(:name => 'Widget2', :contents => '')"
+
+ rails runner "AppDatum.create(:name => 'Widget3', :contents => '')"
+
+ rails runner "AppDatum.create(:name => 'Widget4', :contents => '')"
+
+ rails runner "AppDatum.create(:name => 'Widget5', :contents => '')"
+
+ rails runner "AppDatum.create(:name => 'Widget6', :contents => '')"
+
+ rails runner "AppDatum.create(:name => 'Widget7', :contents => '')"
+
+ rails runner "AppDatum.create(:name => 'Widget8', :contents => '')"
+
+ rails runner "AppDatum.create(:name => 'Widget9', :contents => '')"
+
+ rails runner "AppDatum.create(:name => 'Widget10', :contents => '')"
+
+ rails runner "AppDatum.create(:name => 'Footer', :contents => 'Thumbtack Copyright 2016 Alexander Parsan. Software Licensed To TheStickyNote Education')"
+
+
+ rails runner "Template.create(:name => 'Show Pages', :content => '')"
+
+ rails runner "Template.create(:name => 'Show Posts', :content => '')"
+
+ rails runner "Template.create(:name => 'Homepage Layout', :content => '')"
+ 
+  rails runner "Template.create(:name => 'Tag Page', :content => '')"
+  
+   rails runner "Template.create(:name => 'Show User', :content => '')"
+   
+    rails runner "Template.create(:name => 'Search', :content => '')"
+
+ rails runner "Page.create(:name => 'Homepage', :nested => '/', :slug => 'homepage', :static => true, :content => '', :homepage => true, :template_id => Template.where(:name => 'Homepage Layout').last.id)"
+
+ rails runner "Monologue::User.create(name: 'admin', email:'admin@example.com', password:'admin', password_confirmation: 'admin', role: 'admin', :slug => 'monologue1')"
+
+ rails runner "Setting.create(:name => 'Mail URL', :contents => 'http:://mail.zoho.com', :data => true)"
+ rails runner "Setting.create(:name => 'Ace Editor Style', :contents => 'twilight')"
+
+ rails runner "Monologue::User.create(name: 'admin', email:'admin@example.com', password:'admin', password_confirmation: 'admin', role: 'admin', :slug => 'monologue1')"
+
+
+echo "Pre-Setup has been completed."
+echo "You can login at localhost:3000/admin, with the email:admin@example.com pass:admin. "
+echo "You will need to create a couple of layouts and templates to complete setup. See thumbtack.thestickynote.com for more information."
+echo "When you are ready to deploy, you have a few options. 1) For those using Heroku, we have setup scripts for that, 2) Use Taps to manually port your database to production, or 3) run the predeploy productionsetup script on your server after deploy. "
+
