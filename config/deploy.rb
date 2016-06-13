@@ -1,7 +1,7 @@
 # Change these
 server '159.203.5.234', port: 22, roles: [:web, :app, :db], primary: true
 
-set :repo_url,        'git@github.com:AgentSpyname/TheStickyNote.git'
+set :repo_url,        'git@github.com:TheStickyNote/TheStickyNote.git'
 set :application,     'TheStickyNote'
 set :user,            'deploy'
 set :puma_threads,    [4, 16]
