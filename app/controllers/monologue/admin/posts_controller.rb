@@ -24,7 +24,9 @@ class Monologue::Admin::PostsController < Monologue::Admin::BaseController
 
   def create
     @post = Monologue::Post.new post_params
-    @post.user_id = monologue_current_user.id
+    if @post.user_id.nil?
+         @post.user_id = monologue_current_user.id
+    end
     if @post.save
        @post.create_activity :create, owner: current_user
       prepare_flash_and_redirect_to_edit()
@@ -70,6 +72,6 @@ private
   end
 
   def post_params
-    params.require(:post).permit(:published, :tag_list,:title,:content,:url,:published_at,:page_id, :layout_name, :template_id)
+    params.require(:post).permit(:published, :tag_list,:title,:content,:url,:published_at,:page_id, :layout_name, :template_id, :user_id)
   end
 end

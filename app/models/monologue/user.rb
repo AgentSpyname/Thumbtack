@@ -26,6 +26,8 @@ end
     true
   end
   
+  
+  
   def pretty_role
       if self.role == "admin"
            return "Admin"
