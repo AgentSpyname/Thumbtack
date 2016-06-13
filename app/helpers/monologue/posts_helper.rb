@@ -1,7 +1,7 @@
 module Monologue
     module PostsHelper
         def the_post_list()
-            the_post_list_items = { "title" => @post.title, "created_at" => @post.created_at, "updated_at" => @post.updated_at, "user_id" => @post.user_id, "content" => @post.content, "url" => @post.url, "published_at" => @post.published_at, "tags" => @post.tags, "author_name" => @post.user.name, "author_username" => @post.user.slug, "author_bio" => @post.user.bio }
+            the_post_list_items = { "title" => @post.title, "created_at" => @post.created_at, "updated_at" => @post.updated_at, "user_id" => @post.user_id, "content" => @post.content, "url" => @post.url, "published_at" => @post.published_at, "tags" => @post.tags, "author_name" => @post.user.name, "author_username" => @post.user.slug, "author_bio" => @post.user.bio, "about" => @post.about }
             post_tag_list_items = Array.new
             menu_list_items = Array.new
             
