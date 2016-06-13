@@ -82,6 +82,4 @@ production:
   <<: *default
   host: localhost
   database: thestickynotev2_prodution
-  username: thestickynote
-  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
 
