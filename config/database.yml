@@ -82,4 +82,5 @@ production:
   <<: *default
   host: localhost
   database: thestickynotev2_prodution
-
+  username: psql
+  password: NarwhalDB2016@
