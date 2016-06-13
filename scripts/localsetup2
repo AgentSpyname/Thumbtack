@@ -48,7 +48,6 @@ echo "Writing base data"
  rails runner "Setting.create(:name => 'Mail URL', :contents => 'http:://mail.zoho.com', :data => true)"
  rails runner "Setting.create(:name => 'Ace Editor Style', :contents => 'twilight')"
 
- rails runner "Monologue::User.create(name: 'admin', email:'admin@example.com', password:'admin', password_confirmation: 'admin', role: 'admin', :slug => 'monologue1')"
 
 
 echo "Pre-Setup has been completed."
