@@ -72,6 +72,6 @@ private
   end
 
   def post_params
-    params.require(:post).permit(:published, :tag_list,:title,:content,:url,:published_at,:page_id, :layout_name, :template_id, :user_id, :about)
+    params.require(:post).permit(:published, :tag_list,:title,:content,:url,:published_at,:page_id, :layout_name, :template_id, :user_id, :about, :slug)
   end
 end
