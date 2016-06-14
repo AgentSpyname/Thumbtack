@@ -41,7 +41,7 @@ echo "Writing base data"
    
     rails runner "Template.create(:name => 'Search', :content => '')"
 
- rails runner "Page.create(:name => 'Homepage', :nested => '/', :slug => 'homepage', :static => true, :content => '', :homepage => true, :template_id => Template.where(:name => 'Homepage Layout').last.id)"
+ rails runner "Page.create(:name => 'Homepage', :nested => '/', :slug => 'homepage', :static => true, :content => '', :homepage => true)"
 
  rails runner "Monologue::User.create(name: 'admin', email:'admin@example.com', password:'admin', password_confirmation: 'admin', role: 'admin', :slug => 'monologue1')"
 
