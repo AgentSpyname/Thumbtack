@@ -6,9 +6,10 @@ class Monologue::Admin::SessionsController < Monologue::Admin::BaseController
 
   def create
     user = Monologue::User.find_by_email(params[:email])
-    if user && user.authenticate(params[:password])
+    if user && user.authenticate(params[:password]) && user.role != "staff"
       session[:monologue_user_id] = user.id
       redirect_to "/admin", notice: t("monologue.admin.sessions.messages.logged_in")
+
     else
       flash.now.alert = t("monologue.admin.sessions.messages.invalid")
       render "new"
