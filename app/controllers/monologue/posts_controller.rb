@@ -9,9 +9,12 @@ class Monologue::PostsController < Monologue::ApplicationController
   def show
     
     if monologue_current_user
-      @post = Monologue::Post.default.where("url = :url", {url: params[:post_url]}).first
+      @post = Monologue::Post.default.where(:url => params[:post_url]).first
+  
+
     else
-      @post = Monologue::Post.published.where("url = :url", {url: params[:post_url]}).first
+      @post = Monologue::Post.published.where(:url => params[:post_url]).first
+
     end
     if @post.nil?
        @page = Page.find_by_slug(params[:post_url])
@@ -19,6 +22,7 @@ class Monologue::PostsController < Monologue::ApplicationController
        @other_pages = Page.where(:nested => @page.name.downcase)
     @posts = @page.posts.where(:published => true)
        render :template => 'pages/show', :layout => @page.layout_name
+
        
        
 
