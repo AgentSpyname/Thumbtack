@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160614213204) do
+ActiveRecord::Schema.define(version: 20160704162237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -127,6 +127,7 @@ ActiveRecord::Schema.define(version: 20160614213204) do
     t.integer  "template_id"
     t.boolean  "menu"
     t.text     "about"
+    t.boolean  "more"
   end
 
   create_table "selected_posts", force: :cascade do |t|
