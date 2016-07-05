@@ -66,6 +66,28 @@
     <%= f.check_box :menu,  class: 'checkbox' %>
   </div>
   
+  <div class="field">
+    <%= f.label :sort_id %><br>
+    <%= f.text_field :sort_id %><br/>
+    <b>This is the current menu order:</b>
+    <table class="table">
+      <tr>
+        <th>Order</th>
+        <th>Name</th>
+      </tr>
+      
+    <% @all_pages.each do |page| %>
+    <tr>
+      <td><%= page.sort_id %></td>
+      <td><%= page.name %></td>
+    
+    </tr>
+    <% end %>
+    
+    
+    </table>
+  </div>
+  
  
 
 

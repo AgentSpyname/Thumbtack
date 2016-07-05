@@ -29,10 +29,12 @@ class PagesController < ApplicationController
   # GET /pages/new
   def new
     @page = Page.new
+    @all_pages = Page.all
   end
 
   # GET /pages/1/edit
   def edit
+     @all_pages = Page.all
   end
 
   # POST /pages
@@ -89,7 +91,7 @@ class PagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def page_params
-      params.require(:page).permit(:nested, :postable, :slug, :static, :name, :layout_name, :custom_layout_content, :content,:layout_id,:homepage,:template_id, :menu)
+      params.require(:page).permit(:nested, :postable, :slug, :static, :name, :layout_name, :custom_layout_content, :content,:layout_id,:homepage,:template_id, :menu, :sort_id)
     end
     
         

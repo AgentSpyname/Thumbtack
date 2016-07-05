@@ -1,0 +1,19 @@
+ <% for page in @pages %>
+<% form_for page, :url => update_multiple_menu_path, :html => { :method => :put } do |f| %>
+  <ul>
+   
+      <li>
+        <%= hidden_field_tag "page_ids[]", page.id %>
+        <%=h page.name %>
+      </li>
+  
+  </ul>
+  <p>
+    <%= f.label :sort_id %><br />
+    <%= f.text_field :sort_id %>
+  </p>
+  <p>
+ 
+  <p><%= f.submit "Submit" %></p>
+<% end %>
+  <% end %>

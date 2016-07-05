@@ -25,6 +25,18 @@ class AdminController < ApplicationController
     def update_widget
      @app_datum.update_attributes(app_datum_params)
  end
+ 
+ def edit_multiple_menu
+  @pages = Page.all
+end
+
+def update_multiple_menu
+ params['page'].keys.each do |id|
+      @page = Page.find(id.to_i)
+      @page.update_attributes(pages_params(id))
+    end
+    redirect_to("/admin")
+end
     
     private
     def set_datum

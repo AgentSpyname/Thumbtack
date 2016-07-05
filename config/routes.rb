@@ -3,6 +3,8 @@ Monologue::Engine.routes.draw do
 
 match '/admin/settings/all/edit' => 'settings#edit_all', :as => :edit_all, :via => :get
 match '/admin/settings/all/update' => 'settings#update_all', :as => :update_all, :via => :put
+match '/admin/menu/all/edit' => 'admin#edit_multiple_menu', :as => :edit_multiple_menu, :via => :get
+match '/admin/menu/all/update' => 'admin#update_multiple_menu', :as => :update_multiple_menu, :via => :put
 
 
    namespace :admin, path: "admin", controller: 'Monologue::Admin' do
@@ -21,6 +23,9 @@ Rails.application.routes.draw do
 
 match '/admin/settings/all/edit' => 'settings#edit_all', :as => :edit_all, :via => :get
 match '/admin/settings/all/update' => 'settings#update_all', :as => :update_all, :via => :put
+match '/admin/menu/all/edit' => 'admin#edit_multiple_menu', :as => :edit_multiple_menu, :via => :get
+match '/admin/menu/all/update' => 'admin#update_multiple_menu', :as => :update_multiple_menu, :via => :put
+
   resources :selected_posts, path: '/admin/selected_posts/', except: [:show]
   get '/search' => "posts#search"
   resources :app_data, path: '/admin/widgets', except: [:show, :new]
