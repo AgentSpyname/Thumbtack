@@ -30,11 +30,14 @@ class PagesController < ApplicationController
   def new
     @page = Page.new
     @all_pages = Page.all
+    @menu_pages = Page.where(:menu => true, :nested => "/")
   end
 
   # GET /pages/1/edit
   def edit
      @all_pages = Page.all
+    @menu_pages = Page.where(:menu => true, :nested => "/")
+
   end
 
   # POST /pages
@@ -57,6 +60,8 @@ class PagesController < ApplicationController
   # PATCH/PUT /pages/1
   # PATCH/PUT /pages/1.json
   def update
+        @menu_pages = Page.where(:menu => true, :nested => "/")
+
     respond_to do |format|
       if @page.update(page_params)
         @page.create_activity :create, owner: current_user

@@ -2,7 +2,6 @@ class Page < ActiveRecord::Base
     validates_uniqueness_of :slug
     validates_presence_of :nested
     validates_presence_of :name
-    validates_presence_of :sort_id
     validates_uniqueness_of :sort_id
     validate :slash_not_allowed
     has_many :posts, :class_name => "Monologue::Post", :foreign_key => "page_id"
