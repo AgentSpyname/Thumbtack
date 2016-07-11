@@ -35,6 +35,8 @@ match '/admin/menu/all/update' => 'admin#update_multiple_menu', :as => :update_m
     patch 'admin/pages/*id', to: "pages#update"
     put 'admin/pages/*id', to: "pages#update"
     delete 'admin/pages/*id', to: "pages#destroy"
+        get 'admin/pages/menu', to: "pages#menu"
+
     get 'admin/pages/*id', to: "pages#show", as:'page', controller: 'PagesController'
   end
   get '/admin' => "admin#index"

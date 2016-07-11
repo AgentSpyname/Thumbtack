@@ -2,12 +2,16 @@ class PagesController < ApplicationController
   before_action :set_page, only: [:show, :edit, :update, :destroy]
   impressionist :actions=>[:homepage]
   before_action :check_role, except: :show
-  layout 'admin/application', only: [:create, :update, :index, :new, :edit]
+  layout 'admin/application', only: [:create, :update, :index, :new, :edit, :menu]
 
   # GET /pages
   # GET /pages.json
   def index
-    @pages = Page.all
+    @pages = Page.all.paginate(:page => params[:page], :per_page => 15).order("name ASC")
+  end
+  
+  def menu
+    @pages = Page.where(:menu => true).order("sort_id ASC").paginate(:page => params[:page], :per_page => 15)
   end
 
   # GET /pages/1

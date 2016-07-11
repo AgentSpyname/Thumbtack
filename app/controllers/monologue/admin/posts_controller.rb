@@ -5,7 +5,7 @@ class Monologue::Admin::PostsController < Monologue::Admin::BaseController
   
   def index
     @page = params[:page].nil? ? 1 : params[:page]
-    @posts = Monologue::Post.listing_page(@page).includes(:user)
+    @posts = Monologue::Post.listing_page(@page).includes(:user).paginate(:page => params[:page], :per_page => 15)
   end
 
   def new

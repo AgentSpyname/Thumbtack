@@ -39,8 +39,6 @@
     <% end %>
   </tbody>
 </table>
+<%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
 </div>
 </section>
-<% if @page %>
-  <%= render partial: "pagination" %>
-<% end %>

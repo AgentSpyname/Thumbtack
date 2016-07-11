@@ -1,12 +1,13 @@
  <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        All Pages
+        Pages on Menu
         <small><%= @app_name %></small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-        <li class="active"><a href="/admin/pages">Pages</a></li>
+        <li><a href="/admin/pages">Pages</a></li>
+        <li class="active">Menu</li>
       </ol>
     </section>
     
@@ -16,6 +17,7 @@
 <table class="table">
   <thead>
     <tr>
+      <th>Order in Menu</th>
       <th>Name</th>
       <th>Nested</th>
       <th>Postable</th>
@@ -28,6 +30,7 @@
   <tbody>
     <% @pages.each do |page| %>
       <tr>
+        <td><%= page.sort_id %></td>
         <td><%= page.name %></td>
         <td><%= page.nested %></td>
         <td><%= page.postable %></td>
@@ -41,6 +44,7 @@
   </tbody>
 </table>
 <%= will_paginate @pages, renderer: BootstrapPagination::Rails %>
+
 <br>
 
 <%= link_to 'New Page', new_page_path, class:'btn btn-success' %>
