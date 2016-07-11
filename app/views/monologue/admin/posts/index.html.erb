@@ -39,6 +39,7 @@
     <% end %>
   </tbody>
 </table>
+<h2><%= link_to "Create Posts", "/monologue/posts/new", class: "btn btn-success" %></h2>
 <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
 </div>
 </section>
