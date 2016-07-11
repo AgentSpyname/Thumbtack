@@ -41,7 +41,7 @@ class Monologue::Admin::UsersController < Monologue::Admin::BaseController
   end
 
   def index
-    @users = Monologue::User.all.paginate(:page => params[:page], :per_page => 15)
+    @users = Monologue::User.all.paginate(:page => params[:page], :per_page => 15).order("name ASC")
   end
 
   private
