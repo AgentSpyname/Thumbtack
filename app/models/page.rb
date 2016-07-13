@@ -33,9 +33,9 @@ class Page < ActiveRecord::Base
    self.layout_name = "pagecustom"
 
    
-    if self.template.present? and self.content.nil?
+    if self.template.present? and self.custom_layout_content.nil?
     else
-      if self.content.present? == false
+      if self.custom_layout_content.present? == false
         self.template_id = Template.where(:name => "Show Pages").last.id
       end
     end
