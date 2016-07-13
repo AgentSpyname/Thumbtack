@@ -14,8 +14,8 @@ class Monologue::User < ActiveRecord::Base
  
 
   def to_param
-  slug
-end
+    slug
+  end
 
 def username
   self.name.downcase.gsub(" ", "-")
