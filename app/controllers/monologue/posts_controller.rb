@@ -20,10 +20,8 @@ class Monologue::PostsController < Monologue::ApplicationController
        @page = Page.find_by_slug(params[:post_url])
        @rendered = true
        @other_pages = Page.where(:nested => @page.name.downcase)
-    @posts = @page.posts.where(:published => true)
+       @posts = @page.posts.where(:published => true)
        render :template => 'pages/show', :layout => @page.layout_name
-
-       
        
 
     else
