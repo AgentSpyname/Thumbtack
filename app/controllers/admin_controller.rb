@@ -11,7 +11,7 @@ class AdminController < ApplicationController
     end
     
     def views
-        @posts = Monologue::Post.all.paginate(:page => params[:page])
+        @posts = Monologue::Post.all.paginate(:page => params[:page], :per_page => 10).order("created_at DESC")
          @all_posts = Monologue::Post.all
     end
     
