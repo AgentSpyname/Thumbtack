@@ -20,6 +20,7 @@ class Monologue::Post < ActiveRecord::Base
   default_scope{includes(:tags)}
 
   validates :user_id, presence: true
+  validates :page_id, presence: true
   validates :title, :content, :url, :published_at, presence: true
   validates :url, uniqueness: true
   validate :url_do_not_start_with_slash
@@ -31,6 +32,8 @@ class Monologue::Post < ActiveRecord::Base
     if self.template_id.nil?
       self.template_id =  ::Template.where(:name => "Show Posts").first.id
     end
+    
+
     
     
   end

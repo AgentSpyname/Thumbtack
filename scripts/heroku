@@ -1,7 +1,4 @@
-echo 'Running Inital Heroku Deploy!'
-git push heroku master
-heroku run rake db:migrate
-sleep 10
+F
 heroku run rails runner "AppDatum.create(:name => 'Site Title', :contents => 'Thumbtack')"
 sleep 10
 heroku run rails runner "AppDatum.create(:name => 'Widget1', :contents => '')"
@@ -17,7 +14,6 @@ sleep 10
 heroku run rails runner "AppDatum.create(:name => 'Widget6', :contents => '')"
 sleep 10
 heroku run rails runner "AppDatum.create(:name => 'Widget7', :contents => '')"
-sleep 10
 heroku run rails runner "AppDatum.create(:name => 'Widget8', :contents => '')"
 sleep 10
 heroku run rails runner "AppDatum.create(:name => 'Widget9', :contents => '')"

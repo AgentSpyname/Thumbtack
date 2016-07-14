@@ -1,2 +1,23 @@
-<h1>Settings#edit_all</h1>
-<p>Find me in app/views/settings/edit_all.html.erb</p>
+          
+          <div class="col-lg-12 col-xs-12">
+<h2>Test</h2>
+           <%= form_for :page, :url => update_multiple_menu_path, :html => { :method => :put }, :remote => true  do %>
+ 
+    <% @pages.each do |page| %>
+      <%= fields_for "page[]", page do |page_fields| %>
+      <%= page_fields.label :sort_id, "#{page.name}", class: 'control-sidebar-subheading'%>
+     
+        <%= page.text_field :sort_id, class: 'form-control'%> 
+     
+     
+
+    <% end %>
+
+
+  <div class="actions">
+    <br/>
+    <%= submit_tag "Save Settings", :class =>'btn btn-success'%>
+  </div>
+           
+<% end %>
+</div>

@@ -31,9 +31,9 @@ class Page < ActiveRecord::Base
   end
   before_save do
    self.layout_name = "pagecustom"
+
    
-   
-    if self.template.present?  
+    if self.template.present? and self.content.nil?
     else
       if self.content.present? == false
         self.template_id = Template.where(:name => "Show Pages").last.id
