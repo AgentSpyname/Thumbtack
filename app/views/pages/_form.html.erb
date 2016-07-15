@@ -21,6 +21,12 @@
 
   </div>
   
+  <div class="field">
+    <%= f.label :about, "About This Page" %><br>
+    <%= f.text_area :about, class: 'form-control' %>
+
+  </div>
+  
    <div class="field">
     <%= f.label :slug %><br>
     <%= f.text_field :slug, class: 'form-control' %>
@@ -57,9 +63,32 @@
   
   <div class="field">
     <%= f.label :menu %><br>
-    <%= f.check_box :menu,  class: 'chdckbox' %>
+    <%= f.check_box :menu,  class: 'checkbox' %>
   </div>
   
+  <% if @page.sort_id == nil or @page.nested = "/" and @page.menu == true %>
+  <div class="field">
+    <%= f.label :sort_id %><br>
+    <%= f.text_field :sort_id %><br/>
+    <b>This is the current menu order:</b>
+    <table class="table">
+      <tr>
+        <th>Order</th>
+        <th>Name</th>
+      </tr>
+      
+    <% @menu_pages.each do |page| %>
+    <tr>
+      <td><%= page.sort_id %></td>
+      <td><%= page.name %></td>
+    
+    </tr>
+    <% end %>
+    
+    
+    </table>
+  </div>
+  <% end %>
  
 
 

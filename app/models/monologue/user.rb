@@ -14,8 +14,8 @@ class Monologue::User < ActiveRecord::Base
  
 
   def to_param
-  slug
-end
+    slug
+  end
 
 def username
   self.name.downcase.gsub(" ", "-")
@@ -25,6 +25,8 @@ end
     return false if user.posts.any?
     true
   end
+  
+  
   
   def pretty_role
       if self.role == "admin"
