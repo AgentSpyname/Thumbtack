@@ -8,10 +8,13 @@
         <li class="active">Views</li>
       </ol>
     </section>
+    
+ 
 <% if params[:startdate] or params[:enddate] %>
 <%= render 'admin/pastviews' %>
 <% else %>
 <%= render 'admin/currentviews' %>
 <% end %>
 
+<%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
 

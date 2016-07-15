@@ -2,12 +2,16 @@ class PagesController < ApplicationController
   before_action :set_page, only: [:show, :edit, :update, :destroy]
   impressionist :actions=>[:homepage]
   before_action :check_role, except: :show
-  layout 'admin/application', only: [:create, :update, :index, :new, :edit]
+  layout 'admin/application', only: [:create, :update, :index, :new, :edit, :menu]
 
   # GET /pages
   # GET /pages.json
   def index
-    @pages = Page.all
+    @pages = Page.all.paginate(:page => params[:page], :per_page => 15).order("name ASC")
+  end
+  
+  def menu
+    @pages = Page.where(:menu => true).order("sort_id ASC").paginate(:page => params[:page], :per_page => 15)
   end
 
   # GET /pages/1
@@ -29,10 +33,15 @@ class PagesController < ApplicationController
   # GET /pages/new
   def new
     @page = Page.new
+    @all_pages = Page.all
+    @menu_pages = Page.where(:menu => true, :nested => "/")
   end
 
   # GET /pages/1/edit
   def edit
+     @all_pages = Page.all
+    @menu_pages = Page.where(:menu => true, :nested => "/")
+
   end
 
   # POST /pages
@@ -55,6 +64,8 @@ class PagesController < ApplicationController
   # PATCH/PUT /pages/1
   # PATCH/PUT /pages/1.json
   def update
+        @menu_pages = Page.where(:menu => true, :nested => "/")
+
     respond_to do |format|
       if @page.update(page_params)
         @page.create_activity :create, owner: current_user
@@ -89,7 +100,7 @@ class PagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def page_params
-      params.require(:page).permit(:nested, :postable, :slug, :static, :name, :layout_name, :custom_layout_content, :content,:layout_id,:homepage,:template_id, :menu)
+      params.require(:page).permit(:nested, :postable, :slug, :static, :name, :layout_name, :about, :custom_layout_content, :content,:layout_id,:homepage,:template_id, :menu, :sort_id)
     end
     
         

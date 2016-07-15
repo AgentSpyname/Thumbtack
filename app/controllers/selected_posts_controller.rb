@@ -29,7 +29,7 @@ class SelectedPostsController < ApplicationController
 
     respond_to do |format|
       if @selected_post.save
-        format.html { redirect_to @selected_post, notice: 'Selected post was successfully created.' }
+        format.html { redirect_to root_path}
         format.json { render :show, status: :created, location: @selected_post }
       else
         format.html { render :new }
