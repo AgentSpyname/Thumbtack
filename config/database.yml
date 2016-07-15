@@ -80,7 +80,4 @@ test:
 #
 production:
   <<: *default
-  host: localhost
-  database: thestickynotev2_prodution
-  username: pguser
-  password: NarwhalDB2016@
+ 
